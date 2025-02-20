@@ -8,6 +8,20 @@ Aplicação Web para gerenciar setores de um estacionamento, incluindo funcional
 
 ### O projeto será organizado da seguinte forma:
 
+    src/
+    ├── controllers/
+    │   ├── users.controller.ts
+    ├── models/
+    │   ├── user.entity.ts
+    ├── views/
+    │   ├── index.html
+    ├── shared/
+    │   ├── database/
+    │   │   ├── config.database.ts
+    ├── main.ts
+    ├── app.module.ts
+
+
 ## 3. Requisitos do Sistema
 
 ### Requisitos Funcionais:
@@ -28,11 +42,12 @@ Aplicação Web para gerenciar setores de um estacionamento, incluindo funcional
 
 ### Restrições Técnicas:
 
-- **IDE**: Vscode
-- **Framework - Backend**: Nest
-- **Framework - Frontend**: Next e React
+- **IDE**: Visual Studio Code
+- **Database**: PostgreSQL
+- **Framework - Backend**: NestJS
+- **Framework - Frontend**: Next.js, Redux e React
 - **Test**: Jest
-- **Deploy**: Oracle
+- **Deploy**: AWS, Digital Ocean, Azure, Oracle
 
 ### Restrições Não Técnicas:
 
@@ -45,8 +60,8 @@ Aplicação Web para gerenciar setores de um estacionamento, incluindo funcional
 
 ## 6. Tendências Tecnológicas:
 
-- **Framework - Backend**: Nest
-- **Framework - Frontend**: Next e React
+- **Framework - Backend**: NestJS
+- **Framework - Frontend**: Next.js, Redux e React
 - **Keycloak**: Para autenticação e controle de acesso
 
 ## 7. Riscos do Projeto:
