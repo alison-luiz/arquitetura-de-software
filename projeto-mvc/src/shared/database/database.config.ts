@@ -1,3 +1,4 @@
+import { Vehicle } from '@/models/vehicle.entity'
 import { ConfigService } from '@nestjs/config'
 import { TypeOrmModuleOptions } from '@nestjs/typeorm'
 
@@ -10,7 +11,7 @@ export class DatabaseConfig {
 			url: configService.get('DATABASE_URL'),
 			ssl: false,
 			useUTC: true,
-			entities: [],
+			entities: [Vehicle],
 			synchronize: true,
 			connectTimeoutMS: 30000,
 			logging: false,
