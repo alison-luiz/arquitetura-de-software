@@ -5,10 +5,103 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Cadastro de Veículos</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+      text-align: center;
+      margin: 0;
+      padding: 20px;
+    }
+
+    h1 {
+      color: #333;
+    }
+
+    form {
+      background: white;
+      padding: 20px;
+      width: 300px;
+      margin: 20px auto;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      border-radius: 8px;
+    }
+
+    label {
+      display: block;
+      margin: 10px 0 5px;
+      font-weight: bold;
+    }
+
+    input {
+      width: 100%;
+      padding: 8px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      box-sizing: border-box;
+    }
+
+    button {
+      background-color: #28a745;
+      color: white;
+      border: none;
+      padding: 10px;
+      width: 100%;
+      margin-top: 15px;
+      cursor: pointer;
+      font-size: 16px;
+      border-radius: 5px;
+    }
+
+    button:hover {
+      background-color: #218838;
+    }
+
+    .message {
+      margin-top: 15px;
+      padding: 10px;
+      border-radius: 5px;
+      font-weight: bold;
+    }
+
+    .error {
+      background-color: #ffcccc;
+      color: #cc0000;
+    }
+
+    .success {
+      background-color: #ccffcc;
+      color: #008000;
+    }
+
+    h2 {
+      color: #333;
+    }
+
+    ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    li {
+      background: white;
+      padding: 10px;
+      margin: 5px auto;
+      width: 260px;
+      box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+      border-radius: 5px;
+    }
+  </style>
 </head>
 
 <body>
   <h1>Cadastro de Veículos</h1>
+
+  {{#if message}}
+    <div class="message {{#if (includes message 'inválida')}}error{{else}}success{{/if}}">
+      {{message}}
+    </div>
+  {{/if}}
 
   <form action="/vehicles" method="POST">
     <label for="placa">Placa:</label>
@@ -23,7 +116,7 @@
   <h2>Veículos Cadastrados</h2>
   <ul>
     {{#each vehicles}}
-    <li>{{this.placa}} - {{this.nome}}</li>
+    <li><strong>{{this.placa}}</strong> - {{this.nome}}</li>
     {{/each}}
   </ul>
 </body>

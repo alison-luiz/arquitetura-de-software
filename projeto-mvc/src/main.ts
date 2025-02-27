@@ -4,6 +4,7 @@ import { DatabaseService } from './shared/database/database.service'
 import { ValidationPipe } from '@nestjs/common'
 import { join } from 'path'
 import { NestExpressApplication } from '@nestjs/platform-express'
+import * as hbs from 'hbs'
 
 async function bootstrap() {
 	const app = await NestFactory.create<NestExpressApplication>(AppModule)
@@ -12,6 +13,8 @@ async function bootstrap() {
 
 	app.setViewEngine('hbs')
 
+	hbs.registerHelper('includes', (text: string, search: string) => text.includes(search))
+	
 	app.useGlobalPipes(
 		new ValidationPipe({
 			whitelist: true,
