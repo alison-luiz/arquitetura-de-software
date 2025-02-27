@@ -1,0 +1,11 @@
+services:
+  db_mvc:
+    container_name: "db_mvc"
+    image: "postgres:16.4-alpine"
+    restart: always
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_USER: "db_mvc"
+      POSTGRES_PASSWORD: "db_mvc"
+      POSTGRES_DB: "db_mvc"
