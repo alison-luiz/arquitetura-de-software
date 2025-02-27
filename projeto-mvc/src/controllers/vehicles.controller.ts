@@ -18,8 +18,10 @@ export class VehiclesController {
 	}
 
 	@Post()
+	@Render('vehicles')
 	async create(@Body() vehicleData: Partial<Vehicle>) {
 		await this.vehicleRepository.save(vehicleData)
-		return { message: 'Veículo cadastrado com sucesso!' }
+		const vehicles = await this.vehicleRepository.find()
+		return { message: 'Veículo cadastrado com sucesso!', vehicles }
 	}
 }
