@@ -14,7 +14,7 @@ export class VehiclesController {
 	@Render('vehicles')
 	async findAll() {
 		const vehicles = await this.vehicleRepository.find()
-		return { vehicles, message: null } 
+		return { vehicles, message: null }
 	}
 
 	@Post()
@@ -22,7 +22,10 @@ export class VehiclesController {
 	async create(@Body() vehicleData: Partial<Vehicle>) {
 		if (!this.validatePlate(vehicleData.placa)) {
 			const vehicles = await this.vehicleRepository.find()
-			return { message: '❌ Placa inválida! Use o formato ABC-1234 ou ABC1D23.', vehicles }
+			return {
+				message: '❌ Placa inválida! Use o formato ABC-1234 ou ABC1D23.',
+				vehicles
+			}
 		}
 
 		await this.vehicleRepository.save(vehicleData)
@@ -31,8 +34,8 @@ export class VehiclesController {
 	}
 
 	private validatePlate(plate: string): boolean {
-		const regexAntiga = /^[A-Z]{3}-\d{4}$/  
-		const regexMercosul = /^[A-Z]{3}\d[A-Z]\d{2}$/ 
+		const regexAntiga = /^[A-Z]{3}-\d{4}$/
+		const regexMercosul = /^[A-Z]{3}\d[A-Z]\d{2}$/
 
 		return regexAntiga.test(plate) || regexMercosul.test(plate)
 	}
